@@ -30,7 +30,7 @@ jobs:
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Install dotnet ef
-        run: dotnet tool install --global dotnet-ef --version 9.0*
+        run: dotnet tool install -g dotnet-ef --version 9.*
 
       - name: Create migration bundle
         run: dotnet ef migrations bundle --runtime linux-x64 -o ${{env.DOTNET_ROOT}}/myapp/migrationsbundle
@@ -40,7 +40,7 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-          
+
 
   deploy:
     runs-on: ubuntu-latest
