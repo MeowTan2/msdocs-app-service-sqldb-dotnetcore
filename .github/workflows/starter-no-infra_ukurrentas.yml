@@ -21,7 +21,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0'
+          dotnet-version: '8.0'
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
@@ -30,7 +30,7 @@ jobs:
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Install dotnet ef
-        run: dotnet tool install -g dotnet-ef --version 9.*
+        run: dotnet tool install -g dotnet-ef --version 8.*
 
       - name: Create migraations bundle
         run: dotnet ef migrations bundle --runtime linux-x64 -o ${{env.DOTNET_ROOT}}/myapp/migrationsbundle
@@ -52,7 +52,7 @@ jobs:
       contents: read #This is required for actions/checkout
 
     steps:
-      - name: Download artifact from build job
+      - name: Download artifact from build jobhttps://github.com/MeowTan2/msdocs-app-service-sqldb-dotnetcore/actions/runs/14024225010/job/39260182305#step:7:17
         uses: actions/download-artifact@v4
         with:
           name: .net-app
